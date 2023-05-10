@@ -21,15 +21,11 @@ const RelativeSchema = Schema({
       type: String,
       required: true,
     },
-    relationship: {
-      type: String,
-      required: true,
-    },
-    residentId: {
-      type: mongoose.Schema.Types.ObjectId,
+    residentId: [{
+      type: Schema.Types.ObjectId,
       ref: 'Resident',
       required: true,
-    },
+    }],
   });
 
 RelativeSchema.method('toJSON', function () {

@@ -25,7 +25,7 @@ const getResidentById = async(req, res = response) => {
     try {
         const resident = await Resident.findById(id)
                                     .populate('user','email')
-                                    .populate('emergencyContact','email');
+                                    .populate('emergencyContact','firstName lastName phoneNumber email');
     
         res.json({
             ok: true,

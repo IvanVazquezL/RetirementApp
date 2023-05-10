@@ -21,10 +21,6 @@ const NurseSchema = Schema({
       type: String,
       required: true,
     },
-    address: {
-      type: String,
-      required: true,
-    },
     shift: {
       type: String,
       required: true,
