@@ -22,34 +22,17 @@ const ResidentSchema = Schema({
         required: true
     },
     emergencyContact: {
-        name: {
-            type: String,
-            required: true,
-        },
-        relationship: {
-            type: String,
-            required: true
-        },
-        phoneNumber: {
-            type: String,
-            required: true
-        },
-        email: {
-            type: String,
-            required: true
-        }
+        type: Schema.Types.ObjectId,
+        ref: 'Relative',
     },
     medicalHistory: {
-        type: String,
-        required: true
+        type: String
     },
     allergies: {
-        type: [String],
-        required: true
+        type: [String]
     },
     medications: {
-        type: [String],
-        required: true
+        type: [String]
     },
     roomNumber: {
         type: String,
@@ -59,10 +42,16 @@ const ResidentSchema = Schema({
         type: String,
         required: true,
     },
-    id: {
+    key: {
         type: String,
+        required: true,
+        unique: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
-    }
+    },
 });
 
 ResidentSchema.method('toJSON', function () {

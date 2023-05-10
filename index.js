@@ -22,7 +22,7 @@ dbConnection();
 app.use( express.static('public') );
 
 // Routes
-// app.use( '/api/residents', require('./routes/residents') );
+app.use( '/api/residents', require('./routes/residents') );
 // app.use( '/api/relative', require('./routes/relatives') );
 // app.use( '/api/nurse', require('./routes/nurses') );
 // app.use( '/api/doctor', require('./routes/doctors') );
