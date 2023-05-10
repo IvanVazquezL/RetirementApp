@@ -23,5 +23,4 @@ router.get( '/renew',
     renewToken
 )
 
-
 module.exports = router;
