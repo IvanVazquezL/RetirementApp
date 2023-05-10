@@ -26,7 +26,7 @@ const DoctorSchema = Schema({
       required: true,
     },
     residents: [{
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Resident',
     }],
 });

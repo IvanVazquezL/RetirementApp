@@ -1,6 +1,6 @@
 const { faker } = require('@faker-js/faker');
 
-function generateRandomRelative() {
+function generateRandomNurse() {
     const firstName = faker.name.firstName();
     const lastName = faker.name.lastName();
     const email = faker.internet.email(firstName, lastName);
@@ -10,9 +10,9 @@ function generateRandomRelative() {
     firstName,
     lastName,
     email,
-    phoneNumber
+    phoneNumber,
   };
 }
 
-console.log(JSON.stringify(generateRandomRelative(),null, 2))
+console.log(JSON.stringify(generateRandomNurse(),null, 2))
 
