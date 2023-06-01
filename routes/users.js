@@ -9,12 +9,14 @@ const {
     getUsers,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    getUserById
 } = require('../controllers/users');
 
 const router = Router();
 
 router.get( '/', validateJWT , getUsers );
+router.get( '/:id', validateJWT, getUserById);
 
 router.post( '/',
     [

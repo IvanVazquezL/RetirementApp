@@ -7,7 +7,7 @@ const getUsers = async(req, res) => {
     const from = Number(req.query.from) || 0;
 
     const [ users, total ] = await Promise.all([
-        User.find({}, 'name email role')
+        User.find({}, 'email role')
             .skip( from )
             .limit( 5 ),
         User.countDocuments()
@@ -55,6 +55,31 @@ const createUser = async(req, res = response) => {
             ok: false,
             msg: 'Error creating user'
         });
+    }
+}
+
+const getUserById = async (req, res = response) => {
+    const uid = req.params.id;
+
+    try {
+        const userDB = await User.findById( uid );
+
+        if ( !userDB ) {
+            return res.status(404).json({
+                ok: false,
+                msg: 'There is no user with that id'
+            });
+        }
+
+        res.json({
+            ok: true,
+            user: userDB
+        });
+    } catch (error) {
+        res.status(500).json({
+            ok: false,
+            msg: 'Error getting user by id'
+        })
     }
 }
 
@@ -128,6 +153,7 @@ const deleteUser = async(req, res = response ) => {
 
 module.exports = {
     getUsers,
+    getUserById,
     createUser,
     updateUser,
     deleteUser
